@@ -4,6 +4,10 @@ const app = express()  ;
 
 const { connection } = require( './db' )  ;
 
+const dotenv = require( 'dotenv' )  ;
+
+dotenv.config() ;
+
 const { userRouter } = require( './routes/userRoutes' )  ;
 
 const { auth } = require( './middleware/auth' )  ;
@@ -13,6 +17,10 @@ const { PostModel } = require( './models/postModel' )  ;
 app.use( express.json() )  ;
 
 app.use( '/users' , userRouter )  ;
+
+const port = process.env.port  ;
+
+
 
 
 
@@ -76,7 +84,7 @@ app.delete( '/posts/delete/:id' , auth , async ( req , res )=>{
 } )  ;
 
 
-app.listen( 4500 , async ()=>{
+app.listen( port , async ()=>{
 
     try {
         console.log( 'server is running on http://localhost:4500' )  ;
