@@ -14,11 +14,17 @@ const { auth } = require( './middleware/auth' )  ;
 
 const { PostModel } = require( './models/postModel' )  ;
 
+const port = process.env.port  ;
+
+const cors = require( 'cors' )  ;
+
+app.use( cors() )  ;
+
 app.use( express.json() )  ;
 
 app.use( '/users' , userRouter )  ;
 
-const port = process.env.port  ;
+
 
 
 
