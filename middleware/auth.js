@@ -13,6 +13,8 @@ const auth = async ( req , res , next ) => {
         jwt.verify( token , 'prepleaf-masai', function(err, decoded) {
             if ( !err )
             {
+                req.body.email = decoded.email  ;
+
                 next()  ;
             }
             else
