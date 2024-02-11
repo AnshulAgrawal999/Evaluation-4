@@ -8,6 +8,8 @@ const bcrypt = require( 'bcrypt' ) ;
 
 const jwt  = require( 'jsonwebtoken' )  ;
 
+const { BlackListModel } = require( '../models/blackList' )  ;
+
 userRouter.post( '/register' , async ( req , res ) => {
 
     try {
@@ -81,5 +83,22 @@ userRouter.post( '/login' , async ( req , res )=>{
         res.status(400).send( { "error" : error } )  ;
     }
 } )  ;
+
+userRouter.get( '/logout' , async ( req , res ) => {
+    try {
+        const token = req.headers.authorization  ;
+
+        const item = new BlackListModel( { token } )  ;
+
+        await item.save()  ;
+
+        res.status(200).send( {"msg":"User has been logged out" }  )  ;
+        
+    } catch (error) {
+        res.status(400).send( { "error" : error } )  ;
+    }
+} )
+
+
 
 module.exports = { userRouter }  ;

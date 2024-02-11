@@ -27,9 +27,6 @@ app.use( '/users' , userRouter )  ;
 
 
 
-
-
-
 app.post( '/posts/add' , auth , async ( req , res )=>{
 
     try {
