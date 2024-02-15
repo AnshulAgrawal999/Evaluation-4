@@ -25,6 +25,11 @@ app.use( express.json() )  ;
 app.use( '/users' , userRouter )  ;
 
 
+app.get( '/' , async ( req , res )=>{
+    
+    res.status(200).send( { "msg" : "this the home page of my app"} )  ;
+    
+} )  ;
 
 
 app.post( '/posts/add' , auth , async ( req , res )=>{
