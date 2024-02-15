@@ -35,7 +35,7 @@ app.post( '/posts/add' , auth , async ( req , res )=>{
 
         await post.save()  ;
 
-        res.status(200).send( {"msg":"Post added", post } )  ;
+        res.status(201).send( {"msg":"Post added", post } )  ;
 
     } catch (error) {
         res.status(400).send( {error} )  ;
@@ -65,7 +65,7 @@ app.patch( '/posts/update/:id' , auth , async ( req , res )=>{
 
         await PostModel.updateOne( { 'email' : req.body.email , '_id' : id } , req.body )  ;
 
-        res.status(200).send( {"msg":"Post has been updated"} )  ;
+        res.status(201).send( {"msg":"Post has been updated"} )  ;
 
     } catch (error) {
         res.status(400).send( {error} )  ;
