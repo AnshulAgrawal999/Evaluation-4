@@ -25,9 +25,9 @@ app.use( express.json() )  ;
 app.use( '/users' , userRouter )  ;
 
 
-app.get( '/' , async ( req , res )=>{
+app.get( '/' , ( req , res )=>{
     
-    res.status(200).send( { "msg" : "this the home page of my app"} )  ;
+    res.status(200).send( { "msg" : "this is the home page of my posts app"} )  ;
     
 } )  ;
 
